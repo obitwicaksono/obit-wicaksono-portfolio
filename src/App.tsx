@@ -120,7 +120,7 @@ export default function App() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="mb-32"
+        className="mb-32 flex flex-col items-center text-center"
       >
         <div className="relative inline-block mb-8">
           <motion.div 
@@ -143,7 +143,7 @@ export default function App() {
           Hi, I'm <span className="text-black">Obit Wicaksono!</span>
         </motion.h1>
         
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-4xl md:text-6xl font-bold text-gray-300 mb-8">
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-4xl md:text-6xl font-bold text-gray-300 mb-8">
           <span>I'm</span>
           <span className="text-black">Passionate</span>
           <span>about</span>
@@ -155,7 +155,7 @@ export default function App() {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="flex flex-col md:flex-row md:items-center gap-8">
+        <motion.div variants={itemVariants} className="flex flex-col items-center gap-8">
           <div className="flex items-center gap-4">
             <a 
               href="https://linkedin.com/in/robertho-wicaksono"
@@ -176,7 +176,7 @@ export default function App() {
               <Github className="w-6 h-6" />
             </a>
           </div>
-          <p className="text-gray-500 text-xl max-w-2xl leading-relaxed">
+          <p className="text-gray-500 text-xl max-w-2xl leading-relaxed mx-auto">
             A student who has a strong desire to innovate in an opportunity. I have experience in visual creative field and interested in IT industry, especially web and mobile development. I have been involved in organizations since junior high school, being a problem solver and finding innovations.
           </p>
         </motion.div>
