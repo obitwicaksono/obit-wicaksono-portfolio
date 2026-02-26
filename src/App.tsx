@@ -148,12 +148,6 @@ export default function App() {
           <span className="text-black">Passionate</span>
           <span>about</span>
           <span className="text-[#F27D26]">Software Engineering.</span>
-          
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-black/5 rounded-full text-sm font-medium text-black shadow-sm ml-4">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-            Open to work
-          </div>
-        </motion.div>
 
         <motion.div variants={itemVariants} className="flex flex-col items-center gap-8">
           <div className="flex items-center gap-4">
