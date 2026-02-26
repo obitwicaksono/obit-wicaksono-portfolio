@@ -148,6 +148,7 @@ export default function App() {
           <span className="text-black">Passionate</span>
           <span>about</span>
           <span className="text-[#F27D26]">Software Engineering.</span>
+        </motion.div>
 
         <motion.div variants={itemVariants} className="flex flex-col items-center gap-8">
           <div className="flex items-center gap-4">
