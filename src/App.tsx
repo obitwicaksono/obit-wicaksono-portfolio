@@ -260,12 +260,6 @@ export default function App() {
           
           <div className="space-y-10 relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[1px] before:bg-gray-100">
             <div className="relative pl-8">
-              <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-black border-2 border-white shadow-sm z-10"></div>
-              <h3 className="font-bold text-lg">BEM FTI UNMER</h3>
-              <p className="text-sm text-gray-500">Deputy Coordinator · 2024 - 2025</p>
-              <p className="text-sm text-gray-400 mt-2 leading-relaxed">Managed social media & organized IoT webinars for FTI students.</p>
-            </div>
-            <div className="relative pl-8">
               <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-gray-200 border-2 border-white shadow-sm z-10"></div>
               <h3 className="font-bold text-lg">Web Admin SIM MBKM</h3>
               <p className="text-sm text-gray-500">Internship · Oct - Dec 2024</p>
