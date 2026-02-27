@@ -239,7 +239,7 @@ export default function App() {
           
           <div className="space-y-8 relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[1px] before:bg-gray-100">
             <div className="relative pl-8">
-              <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-black border-2 border-white shadow-sm z-10"></div>
+              <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-gray-200 border-2 border-white shadow-sm z-10"></div>
               <h3 className="font-bold text-lg">University of Merdeka Malang</h3>
               <p className="text-sm text-gray-500">Information System · 2023 - Present</p>
             </div>
