@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "motion/react";
-import { ArrowLeft, Code } from "lucide-react";
+import { ArrowLeft, Code, Github, Figma } from "lucide-react";
 import { projects } from "../data/projects";
 
 export default function ProjectDetail() {
@@ -117,7 +117,7 @@ export default function ProjectDetail() {
                   >
                     {/* Inner bezel simulation */}
                     <div className="absolute inset-0 border-[6px] border-black rounded-[34px] z-10 pointer-events-none" />
-                    
+
                     <img
                       src={imgSrc}
                       alt={`${project.name} UI ${idx + 1}`}
@@ -127,7 +127,7 @@ export default function ProjectDetail() {
                         target.style.display = "none";
                       }}
                     />
-                    
+
                     {/* Fallback pattern when empty */}
                     <div className="absolute inset-0 -z-10 flex items-center justify-center bg-gray-100">
                       <Code className="w-8 h-8 text-gray-300" />
@@ -137,6 +137,35 @@ export default function ProjectDetail() {
               </div>
             </div>
           )}
+
+          {/* Project Footer Links */}
+          {(project.githubUrl || project.figmaUrl) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-24 pt-12 border-t border-gray-100 flex flex-col items-center text-center"
+            >
+              <h3 className="text-2xl font-bold mb-3 tracking-tight">Explore the Project</h3>
+              <p className="text-gray-500 mb-8 max-w-md">Menyelam lebih dalam ke dalam kerangka kode atau struktur desain aslinya.</p>
+
+              <div className="flex flex-wrap justify-center gap-4">
+                {project.githubUrl && (
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 px-6 py-3.5 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 shadow-sm">
+                    <Github className="w-5 h-5" />
+                    Buka Repo GitHub
+                  </a>
+                )}
+                {project.figmaUrl && (
+                  <a href={project.figmaUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 px-6 py-3.5 border border-gray-200 text-gray-800 hover:text-black rounded-full font-medium hover:bg-gray-50 transition-all hover:scale-105 active:scale-95 shadow-sm bg-white">
+                    <Figma className="w-5 h-5 shrink-0 text-pink-500" />
+                    Lihat Desain Figma
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          )}
+
         </motion.div>
       </div>
     </div>

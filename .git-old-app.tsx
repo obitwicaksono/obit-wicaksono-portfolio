@@ -6,14 +6,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  Mail,
-  Github,
+import { 
+  Mail, 
+  Github, 
   Linkedin,
-  ExternalLink,
-  Code,
-  BookOpen,
-  MapPin,
+  ExternalLink, 
+  Code, 
+  BookOpen, 
+  MapPin, 
   Briefcase,
   ArrowUpRight,
   Menu,
@@ -47,11 +47,6 @@ export default function App() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const topProjects = [
-    { name: "react-express-og", lang: "TypeScript", url: "https://github.com/obitwicaksono/react-express-og" },
-    { name: "cart-react-app", lang: "JavaScript", url: "https://github.com/obitwicaksono/cart-react-app" },
-  ];
-
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-6 py-8 md:px-12 md:py-12">
       {/* Navigation */}
@@ -68,7 +63,7 @@ export default function App() {
           </div>
         </div>
         <div className="relative group">
-          <button
+          <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             onMouseEnter={() => setIsMenuOpen(true)}
             className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center hover:bg-white transition-colors shadow-sm relative z-50"
@@ -78,7 +73,7 @@ export default function App() {
 
           <AnimatePresence>
             {isMenuOpen && (
-              <motion.div
+              <motion.div 
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -86,7 +81,7 @@ export default function App() {
                 className="absolute right-0 top-full mt-4 w-64 bg-white border border-black/5 rounded-2xl shadow-2xl p-4 z-40 overflow-hidden"
               >
                 <div className="flex flex-col gap-2">
-                  <button
+                  <button 
                     onClick={() => scrollToSection('projects')}
                     className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group/item"
                   >
@@ -99,7 +94,7 @@ export default function App() {
                     <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover/item:text-black transition-colors" />
                   </button>
 
-                  <button
+                  <button 
                     onClick={() => scrollToSection('education-experience')}
                     className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group/item"
                   >
@@ -119,22 +114,22 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <motion.section
+      <motion.section 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="mb-32 flex flex-col items-center text-center"
       >
         <div className="relative inline-block mb-8">
-          <motion.div
+          <motion.div 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
             className="w-24 h-24 rounded-3xl overflow-hidden shadow-2xl relative z-10"
           >
-            <img
-              src="https://github.com/obitwicaksono.png"
-              alt="Obit Wicaksono"
+            <img 
+              src="https://github.com/obitwicaksono.png" 
+              alt="Obit Wicaksono" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -145,7 +140,7 @@ export default function App() {
         <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
           Hi, I'm <span className="text-black">Obit Wicaksono!</span>
         </motion.h1>
-
+        
         <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-4xl md:text-6xl font-bold text-gray-300 mb-8">
           <span>I'm</span>
           <span className="text-black">Passionate</span>
@@ -155,7 +150,7 @@ export default function App() {
 
         <motion.div variants={itemVariants} className="flex flex-col items-center gap-8">
           <div className="flex items-center gap-4">
-            <a
+            <a 
               href="https://linkedin.com/in/robertho-wicaksono"
               target="_blank"
               rel="noopener noreferrer"
@@ -164,7 +159,7 @@ export default function App() {
             >
               <Linkedin className="w-6 h-6" />
             </a>
-            <a
+            <a 
               href="https://github.com/obitwicaksono"
               target="_blank"
               rel="noopener noreferrer"
@@ -211,12 +206,12 @@ export default function App() {
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
                     <Code className="w-10 h-10 text-gray-300" />
                   </div>
-
+                  
                   {/* Actual Cover */}
                   <img
                     src={project.thumbnail || project.image}
                     alt={project.name}
-                    className="relative object-cover group-hover:scale-105 transition-transform duration-500 z-10"
+                    className="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 z-10"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
@@ -257,53 +252,8 @@ export default function App() {
 
       </motion.section>
 
-      {/* Top Projects - Mini List */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="mb-24"
-      >
-        <motion.div variants={itemVariants} className="bento-card flex flex-col">
-          <div className="flex items-center justify-between mb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Other Projects</span>
-            <Code className="w-4 h-4 text-gray-400" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow">
-            {topProjects.map((project) => (
-              <a
-                key={project.name}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between p-4 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-black/5"
-              >
-                <div>
-                  <h4 className="font-semibold text-sm group-hover:text-black transition-colors">{project.name}</h4>
-                  <p className="text-xs text-gray-400">{project.lang}</p>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-black transition-colors" />
-              </a>
-            ))}
-          </div>
-
-          <div className="mt-6 flex justify-end">
-            <a
-              href="https://github.com/obitwicaksono"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors"
-            >
-              View all on GitHub <Github className="w-4 h-4" />
-            </a>
-          </div>
-        </motion.div>
-      </motion.div>
-
       {/* Bento Grid - Education & Experience */}
-      <motion.div
+      <motion.div 
         id="education-experience"
         variants={containerVariants}
         initial="hidden"
@@ -316,7 +266,7 @@ export default function App() {
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Education</span>
             <Briefcase className="w-4 h-4 text-gray-400" />
           </div>
-
+          
           <div className="space-y-8 relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[1px] before:bg-gray-100">
             <div className="relative pl-8">
               <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-gray-200 border-2 border-white shadow-sm z-10"></div>
@@ -337,7 +287,7 @@ export default function App() {
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Experience</span>
             <Briefcase className="w-4 h-4 text-gray-400" />
           </div>
-
+          
           <div className="space-y-10 relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[1px] before:bg-gray-100">
             <div className="relative pl-8">
               <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-gray-200 border-2 border-white shadow-sm z-10"></div>
@@ -361,12 +311,12 @@ export default function App() {
           <MapPin className="w-4 h-4" />
           <span>Malang, Indonesia</span>
         </div>
-
+        
         <div className="flex items-center gap-8">
           <a href="https://github.com/obitwicaksono" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">GitHub</a>
           <a href="https://linkedin.com/in/robertho-wicaksono" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">LinkedIn</a>
         </div>
-
+        
         <p>© {new Date().getFullYear()} Obit Wicaksono</p>
       </footer>
     </div>
