@@ -4,6 +4,7 @@
  */
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Mail, 
@@ -18,6 +19,7 @@ import {
   Menu,
   X
 } from "lucide-react";
+import { projects } from "./data/projects";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +31,7 @@ export default function App() {
       setIsMenuOpen(false);
     }
   };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -43,11 +46,6 @@ export default function App() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
-
-  const projects = [
-    { name: "react-express-og", lang: "TypeScript", url: "https://github.com/obitwicaksono/react-express-og" },
-    { name: "cart-react-app", lang: "JavaScript", url: "https://github.com/obitwicaksono/cart-react-app" },
-  ];
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-6 py-8 md:px-12 md:py-12">
@@ -91,7 +89,7 @@ export default function App() {
                       <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover/item:bg-black group-hover/item:text-white transition-colors">
                         <Code className="w-4 h-4" />
                       </div>
-                      <span className="text-sm font-semibold">Top Projects</span>
+                      <span className="text-sm font-semibold">Projects</span>
                     </div>
                     <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover/item:text-black transition-colors" />
                   </button>
@@ -177,50 +175,82 @@ export default function App() {
         </motion.div>
       </motion.section>
 
-      {/* Top Projects - Own Row */}
-      <motion.div 
+      {/* Projects Section */}
+      <motion.section
         id="projects"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
-        className="mb-6"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        className="mb-24"
       >
-        <motion.div variants={itemVariants} className="bento-card flex flex-col">
-          <div className="flex items-center justify-between mb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Top Projects</span>
-            <Code className="w-4 h-4 text-gray-400" />
+        <motion.div variants={itemVariants} className="flex items-center justify-between mb-10">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Projects</span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2">Selected Work</h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow">
-            {projects.map((project) => (
-              <a 
-                key={project.name}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between p-4 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-black/5"
-              >
-                <div>
-                  <h4 className="font-semibold text-sm group-hover:text-black transition-colors">{project.name}</h4>
-                  <p className="text-xs text-gray-400">{project.lang}</p>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-black transition-colors" />
-              </a>
-            ))}
-          </div>
-          
-          <div className="mt-6 flex justify-end">
-            <a 
-              href="https://github.com/obitwicaksono" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm font-semibold inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors"
-            >
-              View all on GitHub <Github className="w-4 h-4" />
-            </a>
-          </div>
+          <Code className="w-5 h-5 text-gray-400" />
         </motion.div>
-      </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              to={`/project/${project.slug}`}
+              className="group bento-card flex flex-col overflow-hidden !p-0 cursor-pointer no-underline text-inherit"
+            >
+              <motion.div variants={itemVariants} className="flex flex-col h-full">
+                {/* Project Image */}
+                <div className="relative w-full aspect-video bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+                  {/* Fallback pattern (sits behind image) */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+                    <Code className="w-10 h-10 text-gray-300" />
+                  </div>
+                  
+                  {/* Actual Cover */}
+                  <img
+                    src={project.thumbnail || project.image}
+                    alt={project.name}
+                    className="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 z-10"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </div>
+
+                {/* Project Info */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="font-bold text-lg group-hover:text-[#F27D26] transition-colors">
+                      {project.name}
+                    </h3>
+                    <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-[#F27D26] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
+                  </div>
+
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4 flex-grow">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 text-gray-500 group-hover:bg-black/5 transition-colors"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </div>
+
+
+      </motion.section>
 
       {/* Bento Grid - Education & Experience */}
       <motion.div 
