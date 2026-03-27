@@ -18,7 +18,7 @@ export const projects: Project[] = [
     description:
       "Prototype platform jual minyak jelantah berbasis Web3 & AI, membuat dari business plan dan hingga desain UI/UX.",
     detail:
-      "Allinol adalah platform jual beli minyak jelantah berbasis Web3 dan AI. Project ini merupakan tugas Matakuliah Technopreneurship, di mana saya membuat prototype aplikasi menggunakan Figma. Proses pengerjaan mencakup pembuatan business plan, financial projection, serta desain UI/UX secara menyeluruh. Platform ini dirancang untuk menghubungkan penjual minyak jelantah dengan pembeli secara transparan menggunakan teknologi blockchain.",
+      "Allinol adalah platform jual beli minyak jelantah berbasis Web3 dan AI. Project ini merupakan tugas kelompok Matakuliah Technopreneurship, di mana saya membuat prototype aplikasi menggunakan Figma. Proses pengerjaan mencakup pembuatan business plan, financial projection, serta desain UI/UX secara menyeluruh. Platform ini dirancang untuk menghubungkan penjual minyak jelantah dengan pembeli secara transparan menggunakan teknologi blockchain.",
     thumbnail: "/projects/allinol/card.png",
     image: "/projects/allinol/card.png", // Using the designated hero image
     gallery: [
